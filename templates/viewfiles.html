@@ -1,0 +1,38 @@
+{% extends 'home.html' %}
+
+{% block title %}View Files{% endblock %}
+{% block content %}
+
+<div class="mb-4">
+    <a href="{% url 'myaccount' %}" class="btn btn-primary">Upload a new file</a>
+  </div>
+
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Description</th>
+        <th>Document</th>
+        <th>Update Time</th>
+        <th>Uploaded By</th>
+        <th>Share to </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for doc in documents %}
+      {% if doc.uploaded_by == user %}
+        <tr>
+          <td>{{ doc.description }}</td>
+          <td><a href = {{doc.document.path}} download>{{ doc.document }}</a></td>
+          <td>{{ doc.uploaded_at }}</td>
+          <td>{{ doc.uploaded_by }}</td>
+          <td>Hello</td>
+        </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block breadcrumb %}
+<h3>  {{user.username}} , following is the list of your uploaded files :</h3>
+{% endblock %}

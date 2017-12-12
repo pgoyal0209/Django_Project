@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+
+{% block content %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+    <br/><b>List Of Users and their Info :</b>
+  {% for user in filter.qs %}
+
+    <li> Username is <b>{{ user.username }}</b> and Email is <b>{{user.email}}</b>  </li>
+  {% endfor %}
+  </ul>
+
+{% endblock %}
+
+
+{% block breadcrumb %}
+<h4> Search Users </h4>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+
+{% block title %}Upload File{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Upload a File</h3>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% include 'includes/form.html' %}
+
+            <button type="submit" class="btn btn-primary btn-block">Upload</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block breadcrumb %}
+<h3> Hello {{user.username}} , you can upload files here !!</h3>
+{% endblock %}
